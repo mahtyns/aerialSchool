@@ -16,7 +16,7 @@ module.exports = {
         'primary-500': '#ab7a53',
         'secondary-400': '#f5cdc2',
         'secondary-500': '#d9a395',
-        'special-500': '#4c6e61',
+        'special-500': '#17473E',
       },
       backgroundImage: (theme) => (
         {
