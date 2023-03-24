@@ -4,6 +4,7 @@ import Logo from '@/assets/Logo-Volare.png'
 import Link from "../shared/Link"
 import { SelectedPage } from "@/shared/types"
 import useMediaQueries from "@/hooks/useMediaQueries"
+import Button from "../shared/Button"
 
 type Props = {
     selectedPage: SelectedPage;
@@ -13,7 +14,8 @@ type Props = {
 const Navbar = (props: Props) => {
 
     const flexBetween = 'flex items-center justify-between'
-    const isAboveMediumScreen = useMediaQueries("(min-width: 1060px")
+    const isAboveMediumScreen = useMediaQueries("(min-width: 1122px");
+    const [isMenuToggled, setMenuToggled] = useState<boolean>(false);
 
     return (
         <nav>
@@ -45,14 +47,20 @@ const Navbar = (props: Props) => {
                                         setSelectedPage={props.setSelectedPage}
                                     />
                                 </div>
-                                <div className={`${flexBetween} gap-4 text-lg`}>
+                                <div className={`${flexBetween} gap-8 text-lg`}>
                                     <p>Sign in</p>
-                                    <button>Join us</button>
+                                    <Button
+                                        setSelectedPage={props.setSelectedPage}
+                                    >
+                                        Join us
+                                    </Button>
                                 </div>
                             </div>)
                             :
-                            (<div>
-                            </div>)
+                            (<button className="rounded-full bg-secondary-500 p-3"
+                                onClick={() => { setMenuToggled(!isMenuToggled) }}>
+                                <Bars3Icon className="w-10 h-10 text-white" />
+                            </button>)
                         }
                     </div>
                 </div>
