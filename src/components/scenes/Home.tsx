@@ -3,7 +3,6 @@ import Button from "@/components/shared/Button"
 import useMediaQueries from "@/hooks/useMediaQueries"
 import Logo from '@/assets/Logo-Volare.png'
 import MainPagePic from '@/assets/MainPagePicture.png'
-import TextShadow from '@/assets/TextShadow.png'
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import Vogue from '@/assets/Vogue.png'
 import Elle from '@/assets/Elle.png'
@@ -16,30 +15,29 @@ type Props = {
 
 const Home = (props: Props) => {
 
-    const isAboveMediumScreen = useMediaQueries("(min-width: 1060px)")
+    const isAboveMediumScreen = useMediaQueries("(min-width: 1122px)")
 
     return (
         <section id="home" className="gap-16 py-24 md:h-full md:pb-0">
-            <div className="flex flex-row justify-center w-[80%] m-auto">
-                <div id="mainHeader" className="w-[50%]">
-                    <div>
-                        <div>
-                            <div className="relative z-10">
-                                <img src={Logo} alt="Logo Volare" />
+            <div className="md:flex md:items-center justify-center w-5/6 mx-auto md:h-5/6 gap-24">
+                <div id="mainHeader" className="md:w-1/3 mt-32 md:basis-1/3" >
+                    <div className="md:-mt-48" >
+                        <div className="relative z-10" >
+
+                            <div className="before:absolute before:-top-10 md:before:content-textShadow before:-left-20 before:z-[-1] " >
+                                <img src={Logo} alt="Logo Volare" className="md:w-auto xs:w-64 xs:pl-4" />
                             </div>
-                            <div className="absolute top-12 left-56">
-                                <img src={TextShadow} alt="Volare" />
-                            </div>
+
                         </div>
                         <div>
-                            <h1 className="p-4 text-4xl tracking-widest text-special-500">
+                            <h1 className="mt-8 px-4 md:text-4xl tracking-widest text-special-500 xs:text-2xl">
                                 Learn to fly with us.
                             </h1>
-                            <p className="px-4 text-xl text-primary-500 w-[50%]">
+                            <p className="mt-4 px-4 md:text-xl text-primary-500 xs:text-lg">
                                 Discover the thrill of aerial arts! Our aerial classes offer a unique workout experience that will challenge your strength and flexibility while suspended in the air. Come fly with us.
                             </p>
                         </div>
-                        <div className="flex justify-between gap-2 px-4 py-6 w-80 ">
+                        <div className="flex justify-between mt-6 px-4 gap-2 w-80 items-center md:justify-start">
                             <Button
                                 setSelectedPage={props.setSelectedPage}
                             >
@@ -53,15 +51,15 @@ const Home = (props: Props) => {
                         </div>
                     </div>
                 </div>
-                <div id="mainImage">
+                <div id="mainImage" >
                     <img alt="Main Page Graphic" src={MainPagePic} />
                 </div>
             </div>
 
             {
                 isAboveMediumScreen ? (
-                    <div id="Sponsors" className="bg-primary-300 w-full h-32 flex ">
-                        <div className="flex flex-row justify-between">
+                    <div id="Sponsors" className="bg-gray-50 w-full h-32 flex justify-center">
+                        <div className="flex w-2/3 justify-between items-center">
                             <div>
                                 <img alt="Vogue" src={Vogue} className="w-36 " />
                             </div>
