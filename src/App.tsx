@@ -1,15 +1,17 @@
 import Navbar from '@/components/scenes/Navbar'
 import { useEffect, useState } from 'react'
 import Home from '@/components/scenes/Home'
+import Benefits from './components/scenes/Benefits'
+import ContactUs from './components/scenes/Contactus'
 import { SelectedPage } from './shared/types'
+import Classes from './components/scenes/Classes'
 
 function App() {
 
-  const [selectedPage, setSelectedPage] = useState<SelectedPage>(
-    SelectedPage.Home
-  )
-  const [isTopPage, setTopPage] = useState<boolean>(true)
-
+  const [selectedPage,
+    setSelectedPage] = useState<SelectedPage>(SelectedPage.Home)
+  const [isTopPage,
+    setTopPage] = useState<boolean>(true)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,14 +28,15 @@ function App() {
   }, [])
 
   return (
-    <div className="app bg-gradient-cream">
+    <div className="app">
       <Navbar
         isTopPage={isTopPage}
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage} />
-      <Home
-        setSelectedPage={setSelectedPage}
-      />
+      <Home setSelectedPage={setSelectedPage} />
+      <Benefits setSelectedPage={setSelectedPage} />
+      <Classes setSelectedPage={setSelectedPage} />
+      <ContactUs setSelectedPage={setSelectedPage} />
     </div>
   )
 }
