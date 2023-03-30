@@ -1,10 +1,10 @@
 import Navbar from '@/components/scenes/Navbar'
 import { useEffect, useState } from 'react'
 import Home from '@/components/scenes/Home'
-import Benefits from './components/scenes/Benefits'
-import ContactUs from './components/scenes/Contactus'
+import Benefits from '@/components/scenes/Benefits'
+import ContactUs from '@/components/scenes/ContactUs'
 import { SelectedPage } from './shared/types'
-import Classes from './components/scenes/Classes'
+import Classes from '@/components/scenes/Classes'
 
 function App() {
 

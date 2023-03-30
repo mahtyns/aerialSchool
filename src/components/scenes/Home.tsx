@@ -39,7 +39,7 @@ const Home = (props: Props) => {
 
                             <div
                                 className="before:absolute before:-top-10 md:before:content-textShadow before:-left-20 before:z-[-1] ">
-                                <img src={Logo} alt="Logo Volare" className="md:w-auto xs:w-64 xs:pl-4" />
+                                <img src={Logo} alt="Logo Volare" className="md:w-auto xs:w-64 xs:pl-4 xxs:w-64" />
                             </div>
 
                         </div>
@@ -63,7 +63,7 @@ const Home = (props: Props) => {
                                 hidden: { opacity: 0, x: -50 },
                                 visible: { opacity: 1, x: 0 }
                             }}
-                            className="flex justify-between mt-6 px-4 gap-2 w-80 items-center md:justify-start">
+                            className="flex justify-between mt-12 px-4 gap-2 w-80 items-center md:justify-start">
                             <Button setSelectedPage={props.setSelectedPage}>
                                 Join us
                             </Button>
@@ -76,14 +76,14 @@ const Home = (props: Props) => {
                         </motion.div>
                     </motion.div>
                 </div>
-                <div id="mainImage">
+                <div id="mainImage" className="xxs:pt-12 pb-10 xxs:pb-1">
                     <img alt="Main Page Graphic" src={MainPagePic} />
                 </div>
             </motion.div>
 
             {isAboveMediumScreen
                 ? (
-                    <div id="Sponsors" className="bg-gray-50 w-full h-32 flex justify-center">
+                    <div id="Sponsors" className="bg-gray-50 w-full h-32 flex justify-center mt-12">
                         <div className="flex w-2/3 justify-between items-center">
                             <div>
                                 <img alt="Vogue" src={Vogue} className="w-36 " />
