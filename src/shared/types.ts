@@ -10,3 +10,9 @@ export interface BenefitType {
     benefit: string,
     description: string
 }
+
+export interface ClassInt {
+    class_name: string,
+    class_description: string,
+    class_img: string
+}
