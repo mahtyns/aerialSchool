@@ -11,7 +11,7 @@ const Class = (props: Props) => {
      opacity-0 transition duration-500 hover:opacity-90`;
 
     return (
-        <div className="">
+        <div className="relative">
             <div className={overlayStyles}>
                 <p>
                     {props.name}
