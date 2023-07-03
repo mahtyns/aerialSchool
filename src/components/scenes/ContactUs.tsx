@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import ContactUsPicture from '@/assets/ContactPicture.jpg'
 import { useForm } from "react-hook-form"
 import Button from "../shared/Button"
+import { error } from "console"
 
 type Props = {
     setSelectedPage: (value: SelectedPage) => void
@@ -12,8 +13,19 @@ type Props = {
 const
     ContactUs = (props: Props) => {
 
-        const inputStyling = 'bg-gray-100 placeholder-white px-4 py-3 rounded-lg my-4 text-lg w-full'
+        const {
+            register,
+            trigger,
+            formState: { errors }
+        } = useForm()
 
+        const inputStyling = 'bg-gray-100 placeholder-white px-4 py-3 rounded-lg my-4 text-lg w-full'
+        const handleSubmit = async (e: any) => {
+            const isValid = await trigger()
+            if (!isValid) {
+                e.preventDefault()
+            }
+        }
 
         return (
             <section id="contactus" className="w-5/6 min-h-full py-20 mx-auto">
@@ -49,10 +61,72 @@ const
                             visible: { opacity: 1, x: 0 }
                         }}
                     >
-                        <form className="flex flex-col mb-20">
-                            <input placeholder="name" className={inputStyling} />
-                            <input placeholder="email" className={inputStyling} />
-                            <textarea placeholder="message" className={`${inputStyling} h-[300px]`} />
+                        <form
+                            className="flex flex-col mb-20"
+                            target="_blank"
+                            onSubmit={handleSubmit}
+                            method="POST"
+                            action="https://formsubmit.co/f7a7e6c65ddac50631675d2e8992da78">
+                            <input
+                                type="name"
+                                placeholder="name"
+                                className={inputStyling}
+                                {...register("name", {
+                                    required: true,
+                                    maxLength: 100
+                                })} />
+                            {
+                                errors.name && (
+                                    <p className="mt-2 text-primary-500" >
+                                        {
+                                            errors.name.type === "required" && "This field is required"
+                                        }
+                                        {
+                                            errors.name.type === "maxLength" && "Max lenght is 100 characters"
+                                        }
+                                    </p>
+                                )
+                            }
+                            <input
+                                type="email"
+                                placeholder="email"
+                                className={inputStyling}
+                                {...register("email", {
+                                    required: true,
+                                    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                })} />
+                            {
+                                errors.email && (
+                                    <p className="mt-2 text-primary-500" >
+                                        {
+                                            errors.email.type === "required" && "This field is required"
+                                        }
+                                        {
+                                            errors.email.type === "pattern" && "This is not an email address"
+                                        }
+                                    </p>
+                                )
+                            }
+
+                            <input
+                                placeholder="message"
+                                className={`${inputStyling} h-[300px]`}
+                                {...register("message", {
+                                    required: true,
+                                    maxLength: 1000,
+                                })} />
+                            {
+                                errors.message && (
+                                    <p className="mt-2 text-primary-500" >
+                                        {
+                                            errors.message.type === "required" && "This field is required"
+                                        }
+                                        {
+                                            errors.message.type === "pattern" && "The message should be max. 1000 characters long."
+                                        }
+                                    </p>
+                                )
+                            }
                             <button type="submit" className="bg-special-500 py-2 px-16 rounded-md text-white text-xl hover:bg-primary-500 self-start my-4">
                                 JOIN US
                             </button>
