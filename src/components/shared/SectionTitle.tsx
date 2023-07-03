@@ -1,12 +1,12 @@
 type Props = {
-    children: string
+    children: React.ReactNode
 }
 
 const SectionTitle = (props: Props) => {
     return (
-        <div className="md:text-4xl text-special-500 tracking-widest xs:text-3xl">
+        <h1 className="md:text-4xl text-special-500 tracking-widest xs:text-3xl">
             {props.children}
-        </div>
+        </h1>
     )
 }
 

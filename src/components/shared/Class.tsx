@@ -13,10 +13,10 @@ const Class = (props: Props) => {
     return (
         <div className="relative">
             <div className={overlayStyles}>
-                <p>
+                <p className="text-2xl p-2">
                     {props.name}
                 </p>
-                <p>
+                <p className="text-base">
                     {props.descr}
                 </p>
             </div>
